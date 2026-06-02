@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bul1hiq5s6pt6"]
+
+[ext_resource type="Script" uid="uid://c4nrek2v0qr4o" path="res://scripts/hud.gd" id="1_1etfg"]
+[ext_resource type="FontFile" uid="uid://dexalv8afmxce" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_qpvh6"]
+[ext_resource type="FontFile" uid="uid://lxdu5wg4oil7" path="res://assets/fonts/PixelOperator8.ttf" id="3_7hsmw"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1474135496]
+script = ExtResource("1_1etfg")
+
+[node name="Label" type="Label" parent="." unique_id=1446783371]
+z_index = 99
+offset_left = 40.0
+offset_top = 563.0
+offset_right = 234.0
+offset_bottom = 617.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49019608)
+theme_override_fonts/font = ExtResource("1_qpvh6")
+text = "SPACE TO JUMP
+SHIFT TO DASH
+ESC TO PAUSE"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=175841814]
+offset_left = 47.0
+offset_top = 66.0
+offset_right = 170.0
+offset_bottom = 87.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49019608)
+theme_override_fonts/font = ExtResource("3_7hsmw")
+theme_override_font_sizes/font_size = 30
+text = "0 coins"

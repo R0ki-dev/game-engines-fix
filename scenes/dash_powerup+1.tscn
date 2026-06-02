@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://i0ttuwhac1nc"]
+
+[ext_resource type="Script" uid="uid://djylgbjmkm6hw" path="res://scripts/dash_powerup+1.gd" id="1_x378r"]
+[ext_resource type="Texture2D" uid="uid://cxo87h0ql33tq" path="res://assets/sprites/fruit.png" id="2_x378r"]
+[ext_resource type="AudioStream" uid="uid://bufspw1uvio4q" path="res://assets/sounds/sfx_gem.ogg" id="3_x378r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afnbq"]
+atlas = ExtResource("2_x378r")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ls27i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afnbq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ssuvv"]
+radius = 8.5
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_11l1o"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("3_x378r")
+
+[sub_resource type="Animation" id="Animation_11l1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d14el"]
+resource_name = "pickup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ikuy"]
+_data = {
+&"RESET": SubResource("Animation_11l1o"),
+&"pickup": SubResource("Animation_d14el")
+}
+
+[node name="Dash_+1" type="Area2D" unique_id=1018061470]
+scale = Vector2(2, 2)
+collision_mask = 2
+script = ExtResource("1_x378r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1764564784]
+sprite_frames = SubResource("SpriteFrames_ls27i")
+autoplay = "default"
+frame_progress = 0.8654124
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=700336077]
+shape = SubResource("CircleShape2D_ssuvv")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=412714920]
+stream = SubResource("AudioStreamRandomizer_11l1o")
+bus = &"Sound Effects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129808211]
+libraries/ = SubResource("AnimationLibrary_1ikuy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

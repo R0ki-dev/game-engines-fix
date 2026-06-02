@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bvkm77afxag7h"]
+
+[ext_resource type="Texture2D" uid="uid://cpha121o1c0f1" path="res://assets/sprites/world_tileset.png" id="1_2hko0"]
+[ext_resource type="PackedScene" uid="uid://c4lhowlyexho" path="res://scenes/Hurtbox.tscn" id="2_uybbf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uybbf"]
+radius = 30.016663
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uybbf"]
+atlas = ExtResource("1_2hko0")
+region = Rect2(128, 0, 16, 16)
+
+[node name="BreakableBlock" type="Node2D" unique_id=1829958016]
+
+[node name="Hurtbox2" parent="." unique_id=1343068668 instance=ExtResource("2_uybbf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2" unique_id=33072163]
+shape = SubResource("CircleShape2D_uybbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1039876673]
+texture = SubResource("AtlasTexture_uybbf")

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d3gq4qonee1hq"]
+
+[ext_resource type="Script" uid="uid://ckjyso8oob17a" path="res://scripts/hitbox.gd" id="1_ldxio"]
+
+[node name="Hitbox" type="Area2D" unique_id=1127984506 groups=["Hurtbox"]]
+script = ExtResource("1_ldxio")
+DEBUG_IS_ACTIVE = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
