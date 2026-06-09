@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://byjn54xpguml3"]
 
 [ext_resource type="Script" uid="uid://3llljusykdi6" path="res://scripts/main_menu.gd" id="1_yqorp"]
+[ext_resource type="Texture2D" uid="uid://b6lf0ds003enl" path="res://assets/sprites/power_settings_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" id="2_2wh52"]
+[ext_resource type="Texture2D" uid="uid://bj8dtqpqkdl2s" path="res://assets/tilesets/back.png" id="2_ow34m"]
 [ext_resource type="FontFile" uid="uid://dexalv8afmxce" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_2wh52"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_2gkqs"]
@@ -22,18 +24,45 @@ loop = true
 [node name="MainMenu" type="Node2D" unique_id=1432103819]
 script = ExtResource("1_yqorp")
 
-[node name="Start" type="Button" parent="." unique_id=1957525584]
-offset_left = -12.0
-offset_top = -41.0
-offset_right = 1160.0
-offset_bottom = 672.0
-flat = true
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2058882670]
+offset_left = -5.0
+offset_right = 1154.0
+offset_bottom = 656.0
+texture = ExtResource("2_ow34m")
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="." unique_id=730028082]
-offset_left = 501.0
-offset_top = 518.0
-offset_right = 686.0
-offset_bottom = 541.0
+[node name="Quit" type="Button" parent="." unique_id=234714645]
+offset_left = 1089.0
+offset_top = 587.0
+offset_right = 1109.0
+offset_bottom = 607.0
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Quit" unique_id=33965657]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_2wh52")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Start" type="Button" parent="." unique_id=1957525584]
+offset_left = 90.0
+offset_top = -10.0
+offset_right = 1077.0
+offset_bottom = 663.0
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Start" unique_id=730028082]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 531.0
+offset_right = 593.0
+offset_bottom = 554.0
 text = "Click anywhere to begin"
 
 [node name="MainMenu_Music_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=392105318]
@@ -43,16 +72,20 @@ max_distance = 4096.0
 attenuation = 0.0
 panning_strength = 0.0
 bus = &"Music"
+metadata/_edit_lock_ = true
 
 [node name="Label2" type="Label" parent="." unique_id=1768797564]
-offset_left = 501.0
-offset_top = 242.0
-offset_right = 686.0
-offset_bottom = 265.0
+offset_left = 493.0
+offset_top = 185.0
+offset_right = 678.0
+offset_bottom = 236.0
 theme_override_fonts/font = ExtResource("3_2wh52")
 theme_override_font_sizes/font_size = 50
 text = ":D"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
+[connection signal="pressed" from="Quit" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
